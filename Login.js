@@ -91,7 +91,7 @@ app.post('/auth', function(request, response){
     let password = request.body.password;
 
     if(username && password){
-        db.getConnection(async (err, connection) =>{
+        db.getConnection((err, connection) =>{
             if(error) throw error;
             connection.query("SELECT * FROM accounts WHERE username = ? AND password = ?", [username, password], function(error, results, fields){
                 if(results.length>0){
